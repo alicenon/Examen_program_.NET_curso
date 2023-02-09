@@ -1,0 +1,61 @@
+﻿@page
+@model Examen.Pages.ListaDeseos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Deseos</h1>
+
+<p>
+    <button class="btn-success "><a class="text-light" asp-page="Create">Crea uno nuevo</a> </button>
+</p>
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaDeseo[0].ProductoDeseado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaDeseo[0].FechaRecepcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaDeseo[0].Unidades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaDeseo[0].PrecioUnitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaDeseo[0].Correo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ListaDeseo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductoDeseado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRecepcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unidades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioUnitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                <button class="btn-warning ">  <a class="text-black" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> | </button>
+                <button class="btn-info "> <a class="text-black" asp-page="./Details" asp-route-id="@item.Id">Details</a> | </button>
+                <button class="btn-danger "> <a class="text-black" asp-page="./Delete" asp-route-id="@item.Id">Delete</a> </button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
